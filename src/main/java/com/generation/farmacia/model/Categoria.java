@@ -1,4 +1,4 @@
-package com.generation.farmacia.model;
+package com.generation.lojadegames.model;
 
 import java.util.List;
 
@@ -23,9 +23,30 @@ public class Categoria {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@NotBlank(message = "O atributo jogo é obrigatório!")
+	@NotBlank(message = "O atributo Categoria é obrigatório!")
 	@Size(min = 5, max = 50, message = "O atributo tipo deve conter no mínimo 05 e no máximo 50 caracteres")
 	private String tipo;
+	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "categoria", cascade = CascadeType.REMOVE)
+	@JsonIgnoreProperties("Categoria")
+	
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+
 	
 	
 }
