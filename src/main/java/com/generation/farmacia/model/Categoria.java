@@ -1,4 +1,4 @@
-package com.generation.lojadegames.model;
+package com.generation.farmacia.model;
 
 import java.util.List;
 
