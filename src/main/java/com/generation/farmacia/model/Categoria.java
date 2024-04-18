@@ -3,6 +3,7 @@ package com.generation.farmacia.model;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.generation.farmacia.model.Produto;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -23,13 +24,13 @@ public class Categoria {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@NotBlank(message = "O atributo Categoria é obrigatório!")
+	@NotBlank(message = "O atributo Tipo é obrigatório!")
 	@Size(min = 5, max = 50, message = "O atributo tipo deve conter no mínimo 05 e no máximo 50 caracteres")
 	private String tipo;
 	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "categoria", cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties("Categoria")
-	
+	private List<Produto> produto;
 
 	public Long getId() {
 		return id;
@@ -47,6 +48,13 @@ public class Categoria {
 		this.tipo = tipo;
 	}
 
+	public List<Produto> getProduto() {
+		return produto;
+	}
+
+	public void setProduto(List<Produto> produto) {
+		this.produto = produto;
+	}
 	
 	
 }
